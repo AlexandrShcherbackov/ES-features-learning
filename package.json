@@ -1,0 +1,30 @@
+{
+  "name": "es-features-learning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexandrShcherbackov/ES-features-learning.git"
+  },
+  "author": "Alex Shcherbackov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexandrShcherbackov/ES-features-learning/issues"
+  },
+  "homepage": "https://github.com/AlexandrShcherbackov/ES-features-learning#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.16.0",
+    "webpack-cli": "^4.4.0"
+  }
+}
