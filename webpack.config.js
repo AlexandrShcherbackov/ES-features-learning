@@ -3,6 +3,7 @@ const path = require("path");
 
 //plugins
 const HTMLWebpackplugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: "development",
@@ -19,7 +20,24 @@ module.exports = {
       "@": path.resolve(__dirname, "src"),
     },
   },
-  plugins: [new HTMLWebpackplugin({
-    template: "./index.html",
-  })],
+  plugins: [
+    new HTMLWebpackplugin({
+      template: "./index.html",
+    }),
+    new CleanWebpackPlugin(),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.m?js/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      }
+    ],
+  },
 };
