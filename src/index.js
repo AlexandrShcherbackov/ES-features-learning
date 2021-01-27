@@ -1,7 +1,11 @@
 import { blockVisibility, hoistingTest } from './features/1_theme_let_const';
 import arrowFunction from './features/2_theme_arrow_functions';
-import { iterateObj } from './features/3_generators_iterators';
+import { iterateObj, fibonacci, fibonacciGen, fibonacciVariance } from './features/3_generators_iterators';
 import Person from './features/4_reflect';
+
+
+import regeneratorRuntime from "regenerator-runtime";
+
 
 window.blockVisibility = () => {
     try {
@@ -47,3 +51,16 @@ window.testReflect =() => {
     console.log(new Person('Tom', 'Soyer', 14));
     console.log(Reflect.construct(Person, ['Tom', 'Soyer', 14], TalesHero));
 };
+
+window.fibonacciTest = (n) => {
+    function* generateSequence(end) {
+        for (let i = 0; i < end; i++) {
+            const res = fibonacci(i);
+            yield res;
+        }
+      }
+
+    console.log(...generateSequence(n));
+    console.log(...fibonacciGen(n));
+    console.log(fibonacciVariance(n));
+}
