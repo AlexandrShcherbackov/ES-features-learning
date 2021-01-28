@@ -8,6 +8,7 @@ import {
 } from "./features/3_generators_iterators";
 import Person from "./features/4_reflect";
 import { obj, sym } from "./features/5_symbols";
+import superChild from './features/6_super';
 
 import regeneratorRuntime from "regenerator-runtime";
 
@@ -73,3 +74,7 @@ window.symbolsTest = () => {
   console.log(Object.keys(obj)); // ['bar']
   console.log(Reflect.ownKeys(obj)); //["bar", Symbol()]
 };
+
+window.superTest = () => {
+  superChild.test();
+}
