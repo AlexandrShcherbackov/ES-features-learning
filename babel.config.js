@@ -15,7 +15,8 @@ module.exports = {
     ["@babel/plugin-transform-regenerator", {
       "polyfill": false,
       "regenerator": true,
-    }]
+    }],
+    ["@babel/plugin-proposal-private-methods", { "loose": true }],
   ]
 
 };

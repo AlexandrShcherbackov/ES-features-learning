@@ -10,6 +10,7 @@ import Person from "./features/4_reflect";
 import { obj, sym } from "./features/5_symbols";
 import superChild from './features/6_super';
 import { testMap, testWeakMap } from './features/7_map_weakmap';
+import AdultContent from './features/8_classes';
 
 import regeneratorRuntime from "regenerator-runtime";
 
@@ -91,3 +92,21 @@ window.testMap = () => {
 
   console.log(testWeakMap);
 }
+
+window.testClasses = () => {
+  const AdultContentForKid = new AdultContent(10)
+
+  console.log(String(AdultContentForKid))
+  // (age: 10) → Sorry. Content not for you.
+  
+  console.log(AdultContentForKid.content)
+  // (age: 10) → Sorry. Content not for you.
+  
+  const AdultContentForAdult = new AdultContent(25)
+  
+  console.log(String(AdultContentForAdult))
+  // (age: 25) → …is dummy example content (•)(•) —3 (.)(.) only for adults…
+  
+  console.log(AdultContentForAdult.content)
+  // (age: 25) → …is dummy example content (•)(•) —3 (.)(.) only for adults…
+};
