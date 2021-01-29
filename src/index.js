@@ -9,6 +9,7 @@ import {
 import Person from "./features/4_reflect";
 import { obj, sym } from "./features/5_symbols";
 import superChild from './features/6_super';
+import { testMap, testWeakMap } from './features/7_map_weakmap';
 
 import regeneratorRuntime from "regenerator-runtime";
 
@@ -77,4 +78,16 @@ window.symbolsTest = () => {
 
 window.superTest = () => {
   superChild.test();
+}
+
+
+window.testMap = () => {
+  console.log(testMap);
+  console.log(testMap.keys());
+  console.log(...testMap);
+  console.log(Array.from(testMap));
+  console.log(testMap.values());
+  console.log(Object.fromEntries(testMap.entries()));
+
+  console.log(testWeakMap);
 }
