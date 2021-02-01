@@ -8,9 +8,10 @@ import {
 } from "./features/3_generators_iterators";
 import Person from "./features/4_reflect";
 import { obj, sym } from "./features/5_symbols";
-import superChild from './features/6_super';
-import { testMap, testWeakMap } from './features/7_map_weakmap';
-import AdultContent from './features/8_classes';
+import superChild from "./features/6_super";
+import { testMap, testWeakMap } from "./features/7_map_weakmap";
+import AdultContent from "./features/8_classes";
+import proxyObj from "./features/9_proxy";
 
 import regeneratorRuntime from "regenerator-runtime";
 
@@ -79,8 +80,7 @@ window.symbolsTest = () => {
 
 window.superTest = () => {
   superChild.test();
-}
-
+};
 
 window.testMap = () => {
   console.log(testMap);
@@ -91,22 +91,59 @@ window.testMap = () => {
   console.log(Object.fromEntries(testMap.entries()));
 
   console.log(testWeakMap);
-}
+};
 
 window.testClasses = () => {
-  const AdultContentForKid = new AdultContent(10)
+  const AdultContentForKid = new AdultContent(10);
 
-  console.log(String(AdultContentForKid))
+  console.log(String(AdultContentForKid));
   // (age: 10) → Sorry. Content not for you.
-  
-  console.log(AdultContentForKid.content)
+
+  console.log(AdultContentForKid.content);
   // (age: 10) → Sorry. Content not for you.
-  
-  const AdultContentForAdult = new AdultContent(25)
-  
-  console.log(String(AdultContentForAdult))
+
+  const AdultContentForAdult = new AdultContent(25);
+
+  console.log(String(AdultContentForAdult));
   // (age: 25) → …is dummy example content (•)(•) —3 (.)(.) only for adults…
-  
-  console.log(AdultContentForAdult.content)
+
+  console.log(AdultContentForAdult.content);
   // (age: 25) → …is dummy example content (•)(•) —3 (.)(.) only for adults…
+};
+
+window.proxyTest = () => {
+  const user = {
+    login: 'Alex',
+    email: 'test@mail.com',
+    _password: '123456',
+    authentificationData() {
+      return {
+        email: this.email,
+        pass: this._password,
+      }
+    }
+  }
+
+  const proximiseUser = proxyObj(user);
+
+  console.log(proximiseUser);
+  console.log(proximiseUser.login);
+  console.log(proximiseUser._password);
+
+  try {
+    proximiseUser._password = 'test';
+  } 
+  catch(e) {
+    console.log(e.message);
+  }
+
+  try {
+    delete proximiseUser._password;
+  } 
+  catch(e) {
+    console.log(e.message);
+  }
+
+  console.log(proximiseUser.authentificationData());
+  
 };
